@@ -1,0 +1,55 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+#home .carousel-item img {
+  border-bottom: 15px solid rgb(194, 193, 193);
+  height: 625px;
+  width: 100%;
+}
+.about {
+  font-weight: 300;
+}
+#about {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+#location {
+  background-color: #eee;
+}
+footer {
+  padding: 5px;
+  width: 100%;
+}
+
+/* galeri */
+#galeri {
+  margin-top: -35px;
+  margin-bottom: 20px;
+}
+
+/* anggota */
+#anggota {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+/* form */
+#form {
+  margin-top: 100px;
+}
+
+/* detail anggota */
+#detail {
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 560px) {
+  .carousel-item img {
+    height: 100vh;
+  }
+
+  #about {
+    padding: 15px;
+  }
+}
