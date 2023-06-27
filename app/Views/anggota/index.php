@@ -17,10 +17,10 @@
             <div class="col">
                 <a href="<?= base_url('anggota/tambah') ?>" class="btn btn-primary">Tambah Anggota</a>
                 <?php if (session()->has('pesan')) : ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Good Job!</strong> <?= session('pesan') ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Good Job!</strong> <?= session('pesan') ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -38,28 +38,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?>
+                        <?php
+                        $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+                        $no = 1 + (5 * ($page - 1));
+                        ?>
                         <?php foreach ($anggota as $a) : ?>
-                        <tr class="text-center">
-                            <th scope="row"><?= $i++; ?></th>
-                            <td><?= $a['nama']; ?></td>
-                            <td><?= $a['lingkungan']; ?></td>
-                            <td><?= $a['status']; ?></td>
-                            <td><?= $a['jabatan']; ?></td>
-                            <td>
-                                <!-- Button trigger modal -->
-                                <a href="/anggota/detail/<?= $a['id']; ?>" class="btn btn-info">
-                                    Detail
-                                </a>
-                                <a href="/anggota/edit/<?=  $a['id']; ?>" class="btn btn-primary">Edit</a>
-                                <a href="/anggota/<?= $a['id']; ?>"
-                                    onclick="return confirm('Anda yakin mau menghapus data ?')"
-                                    class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
+                            <tr class="text-center">
+                                <th scope="row"><?= $no++; ?></th>
+                                <td><?= $a['nama']; ?></td>
+                                <td><?= $a['lingkungan']; ?></td>
+                                <td><?= $a['status']; ?></td>
+                                <td><?= $a['jabatan']; ?></td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <a href="/anggota/detail/<?= $a['id']; ?>" class="btn btn-info">
+                                        Detail
+                                    </a>
+                                    <a href="/anggota/edit/<?= $a['id']; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="/anggota/<?= $a['id']; ?>" onclick="return confirm('Anda yakin mau menghapus data ?')" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <?= $pager->links('default', 'pagination'); ?>
             </div>
         </div>
     </div>

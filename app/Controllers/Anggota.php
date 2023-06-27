@@ -2,26 +2,31 @@
 
 namespace App\Controllers;
 
+use App\Models\AnggotaModel;
 use Config\App;
 
 class Anggota extends BaseController
 {
     protected $anggotaModel;
     protected $helpers = 'form';
-    protected $db, $builder;
+    protected $db, $builder, $pager;
 
     public function __construct()
     {
         $this->db      = \Config\Database::connect();
         $this->anggotaModel = new \App\Models\AnggotaModel();
         $this->builder = $this->db->table('anggota');
+        $this->pager = \Config\Services::pager();
     }
 
     public function index()
     {
+
         $data = [
             'title' => 'Anggota | Wilayah 3',
-            'anggota' => $this->anggotaModel->findAll(),
+            // 'anggota' => $this->anggotaModel->findAll(),
+            'anggota' => $this->anggotaModel->paginate(5),
+            'pager' => $this->anggotaModel->pager,
         ];
         return view('anggota/index', $data);
     }
