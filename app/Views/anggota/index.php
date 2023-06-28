@@ -15,7 +15,9 @@
         </div>
         <div class="row mt-3 mb-3">
             <div class="col">
-                <a href="<?= base_url('anggota/tambah') ?>" class="btn btn-primary">Tambah Anggota</a>
+                <?php if (has_permission('administrator')) : ?>
+                    <a href="<?= base_url('anggota/tambah') ?>" class="btn btn-primary">Tambah Anggota</a>
+                <?php endif; ?>
                 <?php if (session()->has('pesan')) : ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Good Job!</strong> <?= session('pesan') ?>
@@ -54,8 +56,10 @@
                                     <a href="/anggota/detail/<?= $a['id']; ?>" class="btn btn-info">
                                         Detail
                                     </a>
-                                    <a href="/anggota/edit/<?= $a['id']; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="/anggota/<?= $a['id']; ?>" onclick="return confirm('Anda yakin mau menghapus data ?')" class="btn btn-danger">Delete</a>
+                                    <?php if (has_permission('administrator')) : ?>
+                                        <a href="/anggota/edit/<?= $a['id']; ?>" class="btn btn-primary">Edit</a>
+                                        <a href="/anggota/<?= $a['id']; ?>" onclick="return confirm('Anda yakin mau menghapus data ?')" class="btn btn-danger">Delete</a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

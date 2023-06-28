@@ -51,6 +51,10 @@
                     <img src="/img/galeri/n.jpg" class="figure-img img-fluid rounded" alt="...">
                     <figcaption class="figure-caption text-end">OMK 3 Camping - Cibubur</figcaption>
                 </figure>
+                <figure class="figure">
+                    <img src="/img/galeri/o.jpg" class="figure-img img-fluid rounded" alt="">
+                    <figcaption class="figure-caption text-end">Wilayah 3 - Matius Championship</figcaption>
+                </figure>
 
             </div>
             <div class="col-md">
@@ -97,6 +101,7 @@
             </div>
         </div>
     </div>
+</footer>
 
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>

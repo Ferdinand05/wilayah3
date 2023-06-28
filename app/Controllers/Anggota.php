@@ -8,7 +8,7 @@ use Config\App;
 class Anggota extends BaseController
 {
     protected $anggotaModel;
-    protected $helpers = 'form';
+    protected $helpers = ['form', 'auth'];
     protected $db, $builder, $pager;
 
     public function __construct()

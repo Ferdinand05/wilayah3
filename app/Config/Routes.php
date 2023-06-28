@@ -30,9 +30,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->delete('/anggota/(:num)', 'Anggota::delete/$1');
-$routes->post('/anggota/update/(:num)', 'Anggota::update/$1');
-$routes->put('/anggota/tambah', 'Anggota::tambahAnggota');
+$routes->get('/anggota/(:num)', 'Anggota::delete/$1', ['filter' => 'role:administrator']);
+$routes->post('/anggota/update/(:num)', 'Anggota::update/$1', ['filter' => 'role:administrator']);
+$routes->get('/anggota/edit/(:num)', 'Anggota::edit/$1', ['filter' => 'role:administrator']);
+$routes->put('/anggota/tambah', 'Anggota::tambah', ['filter' => 'role:administrator']);
+$routes->put('/anggota/tambahAnggota', 'Anggota::tambahAnggota', ['filter' => 'role:administrator']);
+$routes->get('/anggota/detail/(:num)', 'Anggota::detail/$1', ['filter' => 'role:administrator,user']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
