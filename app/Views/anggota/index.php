@@ -15,7 +15,7 @@
         </div>
         <div class="row mt-3 mb-3">
             <div class="col">
-                <?php if (has_permission('administrator')) : ?>
+                <?php if (has_permission(1)) : ?>
                     <a href="<?= base_url('anggota/tambah') ?>" class="btn btn-primary">Tambah Anggota</a>
                 <?php endif; ?>
                 <?php if (session()->has('pesan')) : ?>
@@ -24,6 +24,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php endif; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <form action="" method="post">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon1" name="submit">Search</button>
+                        <input type="text" class="form-control" placeholder="Pencarian" aria-label="Example text with button addon" aria-describedby="button-addon1" name="keyword">
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">
@@ -56,7 +66,7 @@
                                     <a href="/anggota/detail/<?= $a['id']; ?>" class="btn btn-info">
                                         Detail
                                     </a>
-                                    <?php if (has_permission('administrator')) : ?>
+                                    <?php if (has_permission(1)) : ?>
                                         <a href="/anggota/edit/<?= $a['id']; ?>" class="btn btn-primary">Edit</a>
                                         <a href="/anggota/<?= $a['id']; ?>" onclick="return confirm('Anda yakin mau menghapus data ?')" class="btn btn-danger">Delete</a>
                                     <?php endif; ?>

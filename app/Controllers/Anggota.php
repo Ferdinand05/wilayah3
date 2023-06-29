@@ -22,10 +22,17 @@ class Anggota extends BaseController
     public function index()
     {
 
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $anggota = $this->anggotaModel->search($keyword);
+        } else {
+            $anggota = $this->anggotaModel;
+        }
+
         $data = [
             'title' => 'Anggota | Wilayah 3',
             // 'anggota' => $this->anggotaModel->findAll(),
-            'anggota' => $this->anggotaModel->paginate(5),
+            'anggota' => $anggota->paginate(5),
             'pager' => $this->anggotaModel->pager,
         ];
         return view('anggota/index', $data);
