@@ -32,3 +32,7 @@ Role : Administrator and normal user.
 ![image.png](dokumentasi/anggota.png) - Login
 ![image.png](dokumentasi/login.png) - Register
 ![image.png](dokumentasi/register.png)
+
+# Thankyou ! Created with Love,
+
+thanks to CODEIGNITER 4 , BOOTSTRAP 5, MYTH/AUTH.
